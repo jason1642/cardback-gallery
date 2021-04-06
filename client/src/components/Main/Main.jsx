@@ -1,45 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useSpring, animated } from 'react-spring';
-
+import Card from '../Card/Card';
+import SearchBar from '../SearchBar/SearchBar';
 const Container = styled.div`
   background-color: #6e6a6a;
   background-image: url('https://previews.123rf.com/images/roystudio/roystudio1511/roystudio151100310/48782033-old-parchment-paper-texture-background.jpg');
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  /* padding: 0 45px; */
 `;
-const Image = styled(animated.img)`
-  width: 20%;
-`;
-
-const calc = (x, y) => [
-  -(y - window.innerHeight / 2) / 20,
-  (x - window.innerWidth / 2) / 20,
-  1.1,
-];
-const trans = (x, y, s) =>
-  `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 const Main = () => {
   const [cardbackList, setCardbackList] = useState();
-  // const [apiKey, setApiKey] = useState();
 
-  // useEffect(() => {}, []);
-  const ImageRender = ele => {
-    const [props, set] = useSpring(() => ({
-      xys: [0, 0, 1],
-      config: { mass: 5, tension: 350, friction: 40 },
-    }));
-    return (
-      <Image
-        src={ele.imgAnimated}
-        onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-        onMouseLeave={() => set({ xys: [0, 0, 1] })}
-        style={{ transform: props.xys.interpolate(trans) }}
-      />
-    );
-  };
   useEffect(() => {
     const fetchList = async apiKey => {
       const options = {
@@ -53,7 +28,7 @@ const Main = () => {
       axios
         .request(options)
         .then(res => {
-          // console.log(res.data);
+          console.log(res.data);
           setCardbackList(res);
         })
         .catch(err => {
@@ -72,9 +47,10 @@ const Main = () => {
     <>
       {cardbackList ? (
         <Container>
-          {/* {console.log(cardbackList)} */}
-          {/* {cardbackList[5].name} */}
-          {cardbackList && cardbackList.data.map(ele => ImageRender(ele))}
+          <SearchBar />
+          {cardbackList &&
+            cardbackList.data.map(ele => <Card cardInfo={ele} />)}
+          {/* // <Card cardInfo={cardbackList.data[0]} /> */})
         </Container>
       ) : (
         <></>

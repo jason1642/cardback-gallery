@@ -1,12 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
 import React, { useState, useEffect } from 'react';
 import Main from './components/Main/Main';
 import Header from './components/Header/Header';
 import { Route } from 'react-router-dom';
 const App = () => {
   // dotenv variable, from /api. See .sample.env
-  const [apiKey, setApiKey] = useState();
+  // const [apiKey, setApiKey] = useState();
   const callAPI = () => {
     fetch('http://localhost:9000/')
       .then(res => res.text())
