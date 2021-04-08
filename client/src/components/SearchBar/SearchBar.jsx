@@ -11,10 +11,12 @@ const Input = styled.input`
   font-size: 25px;
 `;
 
-const SearchBar = () => {
+const SearchBar = props => {
   const [userInput, setUserInput] = useState('');
   const handleChange = e => {
     setUserInput(e.target.value);
+    console.log(userInput);
+    props.handleSearchInput(userInput);
   };
   useEffect(() => {
     console.log(userInput);
@@ -22,7 +24,11 @@ const SearchBar = () => {
 
   return (
     <Container>
-      <Input value={handleChange} placeholder="search for a card name" />
+      <Input
+        value={userInput}
+        onChange={handleChange}
+        placeholder="Search for a card name"
+      />
     </Container>
   );
 };

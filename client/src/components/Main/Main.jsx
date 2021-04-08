@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import Card from '../Card/Card';
+import CardGalleryContainer from '../CardGalleryContainer/CardGalleryContainer';
 import SearchBar from '../SearchBar/SearchBar';
+
 const Container = styled.div`
   background-color: #6e6a6a;
   background-image: url('https://previews.123rf.com/images/roystudio/roystudio1511/roystudio151100310/48782033-old-parchment-paper-texture-background.jpg');
@@ -12,49 +13,44 @@ const Container = styled.div`
   /* padding: 0 45px; */
 `;
 
-const Main = () => {
-  const [cardbackList, setCardbackList] = useState();
+const Main = props => {
+  const [filteredCardArray, setFilteredCardArray] = useState();
+  const [shouldFilter, setShouldFilter] = useState(false);
+  const [userInput, setUserInput] = useState('');
 
-  useEffect(() => {
-    const fetchList = async apiKey => {
-      const options = {
-        method: 'GET',
-        url: 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cardbacks',
-        headers: {
-          'x-rapidapi-key': apiKey,
-          'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com',
-        },
-      };
-      axios
-        .request(options)
-        .then(res => {
-          console.log(res.data);
-          setCardbackList(res);
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    };
-    const callAPI = () => {
-      fetch('http://localhost:9000/')
-        .then(res => res.text())
-        .then(res => fetchList(res));
-    };
-    callAPI();
-  }, []);
+  const handleSearchInput = input => {
+    setUserInput(input);
+  };
+  const filterCards = input => {
+    // if (input === '') return null;
+    const list1 = props.cardbackList.data;
+    console.log(input);
+    const reg = new RegExp(`${userInput}`, 'ig');
+    const newList = list1.filter(ele => ele.name.match(reg));
 
+    console.log(newList);
+    return newList.length > 0 ? (
+      newList.map(ele => <Card cardInfo={ele} />)
+    ) : (
+      <>Nothing</>
+    );
+  };
   return (
     <>
-      {cardbackList ? (
-        <Container>
-          <SearchBar />
-          {cardbackList &&
-            cardbackList.data.map(ele => <Card cardInfo={ele} />)}
-          {/* // <Card cardInfo={cardbackList.data[0]} /> */})
-        </Container>
-      ) : (
-        <></>
-      )}
+      <Container>
+        {props.cardbackList ? (
+          <>
+            <SearchBar handleSearchInput={handleSearchInput} />
+            {shouldFilter ? (
+              <CardGalleryContainer cardbackList={props.cardbackList} />
+            ) : (
+              <>{filterCards()}qwe</>
+            )}
+          </>
+        ) : (
+          <></>
+        )}
+      </Container>
     </>
   );
 };
