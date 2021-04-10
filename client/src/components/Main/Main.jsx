@@ -41,7 +41,7 @@ const Main = props => {
         {props.cardbackList ? (
           <>
             <SearchBar handleSearchInput={handleSearchInput} />
-            {shouldFilter ? (
+            {userInput === '' ? (
               <CardGalleryContainer cardbackList={props.cardbackList} />
             ) : (
               <>{filterCards()}qwe</>
