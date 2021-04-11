@@ -9,8 +9,13 @@ const Container = styled.div`
   height: 100px;
   width: 100%;
 `;
+const Title = styled.h1`
+  font-weight: 500;
+`
 const Header = () => {
-  return <Container>This is a header</Container>;
+  return <Container>
+    <Title>Hearthstone Cardback Gallery</Title>
+    </Container>;
 };
 
 export default Header;

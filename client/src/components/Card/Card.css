@@ -33,8 +33,6 @@ body {
 }
 
 .card {
-  width: 45ch;
-  height: 45ch;
   /* background: grey; */
   border-radius: 5px;
   background-size: cover;

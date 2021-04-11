@@ -16,7 +16,7 @@ const SearchBar = props => {
   const handleChange = e => {
     setUserInput(e.target.value);
     console.log(userInput);
-    props.handleSearchInput(userInput);
+    props.handleSearchInput(e.target.value);
   };
   useEffect(() => {
     console.log(userInput);
