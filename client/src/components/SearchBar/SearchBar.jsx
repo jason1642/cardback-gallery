@@ -2,13 +2,19 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  width: 100%;
+  width: 98%;
   height: 60px;
+  margin: 0 auto;
+  border-radius: 5px;
 `;
 const Input = styled.input`
   height: 100%;
   width: 100%;
   font-size: 25px;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+
 `;
 
 const SearchBar = props => {

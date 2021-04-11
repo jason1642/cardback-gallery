@@ -11,7 +11,8 @@ const Container = styled.div`
   background-image: url('https://previews.123rf.com/images/roystudio/roystudio1511/roystudio151100310/48782033-old-parchment-paper-texture-background.jpg');
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
+  justify-content: flex-start;
+  align-content: flex-start;
   min-height: 100%;
   /* padding: 0 45px; */
 `;
