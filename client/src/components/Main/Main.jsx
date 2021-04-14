@@ -39,13 +39,13 @@ const Main = props => {
       <NoCardsFound />
     );
   };
+
   return (
     <>
       <Container>
-      <SearchBar handleSearchInput={handleSearchInput} />
+        <SearchBar handleSearchInput={handleSearchInput} />
         {props.cardbackList ? (
           <>
-            
             <Divider></Divider>
             {/*  */}
             {userInput === '' ? (
