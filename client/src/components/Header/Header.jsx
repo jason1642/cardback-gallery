@@ -14,8 +14,12 @@ const Title = styled.h1`
   font-weight: 500;
   color: #fffbee;
 `
+const Image = styled.img`
+
+`
 const Header = () => {
   return <Container>
+    <Image src='https://cdn.iconscout.com/icon/free/png-512/hearthstone-2288562-1933807.png'/>
     <Title>Hearthstone Cardback Gallery</Title>
     </Container>;
 };

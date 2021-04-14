@@ -13,8 +13,7 @@ const Title = styled.h2`
     text-align: center;
     margin: 0 auto; 
     /* width: 100%; */
-    border: 1px solid black;
-`
+ `
 const NoCardsFound = () => {
     return ( 
         <Container>

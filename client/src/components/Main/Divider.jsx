@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 
 const Container = styled.div`
-    margin-top: 10px;
-    margin-bottom: -20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     height: 75px;
     /* background-color: white; */
     width: 100%;
@@ -12,7 +12,6 @@ const Container = styled.div`
 `
 const Title = styled.h2`
     font-size: 35px;
-    margin: 15px auto;
     text-align: center;
 `
 

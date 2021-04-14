@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import './Card.css';
+import CardInfoModal from '../Card/CardInfoModal'
+
 
 const Image = styled.div`
   height: 350px;
@@ -27,12 +29,24 @@ const Label = styled.p`
   padding: 33px;
 `;
 const Card = props => {
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
-    <Container>
+    <Container onClick={handleOpen}>
       <Image
         className="card"
         style={{ backgroundImage: `url(${props.cardInfo.imgAnimated})` }}
       />
+           <CardInfoModal handleClose={handleClose} isOpen={open} cardInfo={props.cardInfo}/>
+
       <Label>{props.cardInfo.name}</Label>
     </Container>
   );

@@ -9,9 +9,10 @@ const Container = styled.div`
 `;
 const Input = styled.input`
   height: 100%;
-  width: 100%;
+  width: 50%;
   font-size: 25px;
   border-radius: 15px;
+  margin: 20px 0;
   outline: none;
   padding-left: 10px;
 
