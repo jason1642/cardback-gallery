@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jason1642/cardback-gallery/issues"
   },
-  "homepage": "https://github.com/jason1642/cardback-gallery#readme"
+  "homepage": "https://github.com/jason1642/cardback-gallery#readme",
+  "dependencies": {
+    "webpack-manifest-plugin": "^3.1.1"
+  }
 }
