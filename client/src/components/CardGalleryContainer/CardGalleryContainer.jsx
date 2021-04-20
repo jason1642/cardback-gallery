@@ -5,14 +5,15 @@ const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
-  
 `;
 
 const CardGrid = props => {
   return (
     <Container>
       {props.cardbackList &&
-        props.cardbackList.data.map(ele => <Card cardInfo={ele} />)}
+        props.cardbackList.data.map(ele => (
+          <Card key={ele.cardBackId} cardInfo={ele} />
+        ))}
     </Container>
   );
 };
