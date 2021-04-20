@@ -28,3 +28,12 @@ npm install && npm start
 * 0.0.1
     * Work in progress
     * Homepage displayings all cardbacks, search functionality. No other routes
+
+
+## Contributing
+
+1. Fork it (<https://github.com/jason1642/cardback-gallery/fork>)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
