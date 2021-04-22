@@ -17,7 +17,7 @@ const Container = styled.div`
   /* padding: 0 45px; */
 `;
 
-const Main = props => {
+const HomePage = props => {
   const [filteredCardArray, setFilteredCardArray] = useState();
   const [shouldFilter, setShouldFilter] = useState(false);
   const [userInput, setUserInput] = useState('');
@@ -42,25 +42,9 @@ const Main = props => {
 
   return (
     <>
-      <Container>
-        <SearchBar handleSearchInput={handleSearchInput} />
-        {props.cardbackList ? (
-          <>
-            <Divider></Divider>
-            {/*  */}
-            {userInput === '' ? (
-              <CardGalleryContainer cardbackList={props.cardbackList} />
-            ) : (
-              <>{filterCards()}</>
-            )}
-            {/*  */}
-          </>
-        ) : (
-          <></>
-        )}
-      </Container>
+      <Container>asd</Container>
     </>
   );
 };
 
-export default Main;
+export default HomePage;

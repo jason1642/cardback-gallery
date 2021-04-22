@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Main from './components/Main/Main';
+import Main from './components/HomePage/HomePage';
 import Header from './components/Header/Header';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
+import Routes from './components/Routes/Routes';
 const App = () => {
   // dotenv variable, from /api. See .sample.env
   // const [apiKey, setApiKey] = useState();
@@ -48,7 +49,7 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <Route path="/" render={() => <Main cardbackList={cardbackList} />} />
+      <Routes cardbackList={cardbackList} />
     </div>
   );
 };
