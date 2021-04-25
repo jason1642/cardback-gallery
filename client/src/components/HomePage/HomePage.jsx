@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Card from '../Card/Card';
-import CardGalleryContainer from '../CardGalleryContainer/CardGalleryContainer';
-import SearchBar from '../SearchBar/SearchBar';
-import Divider from './Divider';
-import NoCardsFound from './NoCardsFound';
 
 const Container = styled.div`
   background-color: #6e6a6a;
@@ -18,31 +13,17 @@ const Container = styled.div`
 `;
 
 const HomePage = props => {
-  const [filteredCardArray, setFilteredCardArray] = useState();
-  const [shouldFilter, setShouldFilter] = useState(false);
-  const [userInput, setUserInput] = useState('');
-
-  const handleSearchInput = input => {
-    setUserInput(input);
-  };
-  const filterCards = input => {
-    // if (input === '') return null;
-    const list1 = props.cardbackList.data;
-    console.log(input);
-    const reg = new RegExp(`${userInput}`, 'ig');
-    const newList = list1.filter(ele => ele.name.match(reg));
-
-    console.log(newList);
-    return newList.length > 0 ? (
-      newList.map(ele => <Card cardInfo={ele} />)
-    ) : (
-      <NoCardsFound />
-    );
-  };
-
   return (
     <>
-      <Container>asd</Container>
+      <Container>
+        Welcome!
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus,
+          veniam, et optio itaque at facilis laboriosam maiores odit, fugit rem
+          error magni nostrum dolorem voluptas delectus natus illum incidunt
+          ratione?
+        </p>
+      </Container>
     </>
   );
 };

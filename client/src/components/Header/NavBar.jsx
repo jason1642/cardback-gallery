@@ -14,16 +14,19 @@ const Nav = styled(Link)`
   padding: 0 12px;
   &:hover {
     cursor: pointer;
-    background-color: black;
+    background-color: grey;
   }
 `;
 const NavBar = () => {
   return (
     <Container>
-      <Nav>Card Sets</Nav>
-      <Nav>Card Sets</Nav>
-      <Nav>Card Sets</Nav>
-      <Nav>Card Sets</Nav>
+      <Nav to="/cardsets">Card Sets</Nav>
+      {/* see all */}
+      {/* latest expansion */}
+      {/* decending expansions - limit 3 */}
+      <Nav to="/cardbacks">Card Backs</Nav>
+      <Nav>Info</Nav>
+      <Nav>News</Nav>
     </Container>
   );
 };

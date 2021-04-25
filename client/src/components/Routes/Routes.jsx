@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import CardbackGallery from '../CardGalleryContainer/CardGalleryContainer';
+import CardbackGallery from '../CardBackGalleryContainer/CardBackGalleryContainer';
+import HomePage from '../HomePage/HomePage';
+import CardSets from '../CardSets/CardSetsContainer';
 
 const Routes = props => {
   return (
@@ -8,9 +10,16 @@ const Routes = props => {
       <Route
         exact
         path="/cardbacks"
-        render={() => <CardbackGallery cardbackList={props.cardbackList} />}
+        render={() => <CardbackGallery apiKey={props.apiKey} />}
       />
-      {/* <Route path="/" re1nder={() => <Main cardbackList={cardbackList} />} /> */}
+      <Route
+        exact
+        path="/cardsets"
+        render={() => (
+          <CardSets apiKey={props.apiKey} cardbackList={props.cardbackList} />
+        )}
+      />
+      <Route exact path="/" render={() => <HomePage />} />
     </>
   );
 };

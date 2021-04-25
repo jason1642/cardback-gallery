@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NavBar from './NavBar';
+import { Link } from 'react-router-dom';
 const Container = styled.div`
   display: flex;
   /* margin-bottom: 40px; */
@@ -13,11 +14,16 @@ const Title = styled.h1`
   font-weight: 500;
   color: #fffbee;
 `;
-const Image = styled.img``;
+const Image = styled.img`
+  height: 100%;
+`;
+const LogoButton = styled(Link)``;
 const Header = () => {
   return (
     <Container>
-      <Image src="https://cdn.iconscout.com/icon/free/png-512/hearthstone-2288562-1933807.png" />
+      <LogoButton to="/">
+        <Image src="https://cdn.iconscout.com/icon/free/png-512/hearthstone-2288562-1933807.png" />
+      </LogoButton>
       {/* <Title>Hearthstone Cardback Gallery</Title> */}
       <NavBar />
     </Container>
