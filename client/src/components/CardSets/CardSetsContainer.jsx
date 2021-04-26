@@ -1,11 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 const Container = styled.div`
   height: 100%;
   background-image: url('https://previews.123rf.com/images/roystudio/roystudio1511/roystudio151100310/48782033-old-parchment-paper-texture-background.jpg');
 `;
+const SetBox = styled.div`
+  color: black;
+  background-color: orange;
+  border: 1px solid black;
+  padding: 20px;
+  margin: 30px auto;
+  &:hover {
+    background-color: #f7c871;
+  }
+`;
+const Title = styled.h1`
+  margin: 0;
+  padding: 25px 0;
+`;
+const LinkWrap = styled(Link)``;
 const CardSetContainer = props => {
   const [hearthstoneInfo, setHearthstoneInfo] = useState();
   useEffect(() => {
@@ -32,11 +47,13 @@ const CardSetContainer = props => {
   }, [props.apiKey]);
   return (
     <Container>
-      Standard Sets:{' '}
-      {hearthstoneInfo.standard.map(ele => (
-        <p>{ele}</p>
-      ))}
-      {console.log(hearthstoneInfo)}
+      <Title>Standard Sets: </Title>
+      {hearthstoneInfo &&
+        hearthstoneInfo.standard.map(ele => (
+          <LinkWrap to={`/expansion-card-set/${ele}`}>
+            <SetBox>{ele}</SetBox>
+          </LinkWrap>
+        ))}
     </Container>
   );
 };

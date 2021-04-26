@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Card from '../Card/Card';
+import Card from './CardBack/CardBack';
 import NoCardsFound from '../HomePage/NoCardsFound';
 import SearchBar from '../SearchBar/SearchBar';
 import Divider from '../HomePage/Divider';
@@ -69,9 +69,7 @@ const CardBackGalleryContainer = props => {
           {userInput === '' ? (
             // <CardGalleryContainer cardbackList={cardbackList} />
             cardbackList &&
-            cardbackList.data.map(ele => (
-              <Card key={ele.cardBackId} cardInfo={ele} />
-            ))
+            cardbackList.data.map((ele, i) => <Card key={i} cardInfo={ele} />)
           ) : (
             <>{filterCards()}</>
           )}

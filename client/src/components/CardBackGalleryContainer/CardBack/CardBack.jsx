@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import './Card.css';
-import CardInfoModal from '../Card/CardInfoModal'
-
+import './CardBack.css';
+import CardInfoModal from './CardBackInfoModal';
 
 const Image = styled.div`
   height: 350px;
@@ -18,7 +17,7 @@ const Container = styled.div`
   margin: 0px 5px 30px;
 `;
 const Label = styled.p`
-  font-family: Belwe Bold,Georgia,Times,Times New Roman,serif;
+  font-family: Belwe Bold, Georgia, Times, Times New Roman, serif;
   text-align: center;
   font-size: 20px;
   inset: 100% 0px 5px;
@@ -29,7 +28,6 @@ const Label = styled.p`
   padding: 33px;
 `;
 const Card = props => {
-
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -43,9 +41,13 @@ const Card = props => {
     <Container onClick={handleOpen}>
       <Image
         className="card"
-        style={{ backgroundImage: `url(${props.cardInfo.imgAnimated})` }}
+        style={{ backgroundImage: `url(${props.cardInfo.img})` }}
       />
-           <CardInfoModal handleClose={handleClose} isOpen={open} cardInfo={props.cardInfo}/>
+      <CardInfoModal
+        handleClose={handleClose}
+        isOpen={open}
+        cardInfo={props.cardInfo}
+      />
 
       <Label>{props.cardInfo.name}</Label>
     </Container>
