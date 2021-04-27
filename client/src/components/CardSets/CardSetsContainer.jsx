@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 const Container = styled.div`
-  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
   background-image: url('https://previews.123rf.com/images/roystudio/roystudio1511/roystudio151100310/48782033-old-parchment-paper-texture-background.jpg');
 `;
 const SetBox = styled.div`

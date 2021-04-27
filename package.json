@@ -18,5 +18,10 @@
   "homepage": "https://github.com/jason1642/cardback-gallery#readme",
   "dependencies": {
     "webpack-manifest-plugin": "^3.1.1"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^11.2.6",
+    "jest-dom": "^4.0.0",
+    "react-test-render": "^1.1.2"
   }
 }

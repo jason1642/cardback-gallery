@@ -45,22 +45,28 @@ const TextSide = styled.div`
   user-select: text;
   color: rgb(255, 255, 255);
 `;
-// const ExitButton = styled.a`
-//   position: fixed;
-//   top: 35px;
-//   right: 35px;
-//   color: white;
-//   z-index: 4;
-//   &:hover {
-//     cursor: pointer;
-//   }
-// `;
-const Title = styled.h2``;
+const ListItem = styled.li``;
+const ListLabel = styled.span`
+  color: rgb(255, 229, 172);
+  font-weight: bold;
+`;
+const Name = styled.h2``;
 // This component is a popover element that will display information of an item that was clicked and block interaction with the rest of the application.
 
 const CardInfoModal = props => {
   const classes = useStyles();
-
+  const {
+    name,
+    cardSet,
+    text,
+    type,
+    img,
+    description,
+    flavor,
+    rarity,
+    playerClass,
+    artist,
+  } = props.cardInfo;
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -77,16 +83,35 @@ const CardInfoModal = props => {
       <ClickAwayListener onClickAway={props.handleClose}>
         <Container className={classes.paper}>
           <ImageSide>
-            <Image src={props.cardInfo.img} />
+            <Image src={img} />
           </ImageSide>
           <TextSide>
-            <Title id="transition-modal-title">{props.cardInfo.name}</Title>
-            <p id="transition-modal-description">
-              {props.cardInfo.description}
-              {/* {console.log(props.cardInfo)} */}
-            </p>
-            {/* <span>How to get: </span> */}
-            <span>{props.cardInfo.howToGet}</span>
+            <Name id="transition-modal-title">{name}</Name>
+            <p id="transition-modal-description">{description}</p>
+            <p>{flavor}</p>
+            <p dangerouslySetInnerHTML={{ __html: text }} />
+            <ul>
+              <ListItem>
+                <ListLabel>Type: </ListLabel>
+                {type}
+              </ListItem>
+              <ListItem>
+                <ListLabel>Rarity: </ListLabel>
+                {rarity}
+              </ListItem>
+              <ListItem>
+                <ListLabel>Set: </ListLabel>
+                {cardSet}
+              </ListItem>
+              <ListItem>
+                <ListLabel>Class: </ListLabel>
+                {playerClass}
+              </ListItem>
+              <ListItem>
+                <ListLabel>Artist: </ListLabel>
+                {artist}
+              </ListItem>
+            </ul>
           </TextSide>
         </Container>
       </ClickAwayListener>

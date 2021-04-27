@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import Card from './Card/Card';
+import SetGalleryHeader from './SetHeader/SetHeader';
+import GroupContainer from './GroupContainer/GroupContainer';
+
 const Container = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
+  width: 100%;
   justify-content: center;
+  background-image: url('https://previews.123rf.com/images/roystudio/roystudio1511/roystudio151100310/48782033-old-parchment-paper-texture-background.jpg');
 `;
 const CardSetGallery = props => {
   const [expansionCardList, setExpansionCardList] = useState();
@@ -36,9 +40,16 @@ const CardSetGallery = props => {
 
   return (
     <Container>
-      {console.log(expansionCardList)}
-      {expansionCardList &&
-        expansionCardList.map(ele => <Card cardInfo={ele} />)}
+      {expansionCardList && (
+        <>
+          {console.log(expansionCardList)}
+          <SetGalleryHeader
+            expansionName={props.match.params.expansionName}
+            expansionCardList={expansionCardList}
+          />
+          <GroupContainer expansionCardList={expansionCardList} />
+        </>
+      )}
     </Container>
   );
 };

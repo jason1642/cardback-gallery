@@ -17,7 +17,7 @@ const App = () => {
   const [apiKey, setApiKey] = useState();
   useEffect(() => {
     const callAPI = () => {
-      fetch('http://localhost:9000/')
+      fetch('http://192.168.1.8:9000/')
         .then(res => res.text())
         .then(res => setApiKey(res));
     };
