@@ -19,7 +19,7 @@ const classes = [
   'Shaman',
   'Warlock',
   'Warrior',
-  'Nuetral',
+  'Neutral',
 ];
 
 const GroupContainer = props => {
@@ -27,11 +27,13 @@ const GroupContainer = props => {
 
   useEffect(() => {
     const newArray = [];
-    classes.map(ele =>
-      newArray.push(
-        props.expansionCardList.filter(item => item.playerClass === ele)
-      )
-    );
+    classes.map(ele => {
+      console.log(ele);
+      ele &&
+        newArray.push(
+          props.expansionCardList.filter(item => item.playerClass === ele)
+        );
+    });
     setClassesCards(newArray);
     console.log(classesCards);
   }, [props.expansionCardList]);
