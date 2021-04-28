@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Card from '../Card/Card';
+import SingleGroup from './SingleGroup';
 
 const Container = styled.div`
+  width: 100%;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: center;
 `;
 const classes = [
@@ -22,25 +23,29 @@ const classes = [
 ];
 
 const GroupContainer = props => {
-  const [classesCards, setClassesCards] = useState([]);
+  const [classesCards, setClassesCards] = useState();
 
   useEffect(() => {
+    const newArray = [];
     classes.map(ele =>
-      setClassesCards(
-        classesCards.concat(
-          props.expansionCardList.filter(item => item.playerClass === ele)
-        )
+      newArray.push(
+        props.expansionCardList.filter(item => item.playerClass === ele)
       )
     );
+    setClassesCards(newArray);
+    console.log(classesCards);
   }, [props.expansionCardList]);
 
   return (
     <Container>
-      {classesCards && classesCards.map(ele => console.log(ele))}
+      {/* {classesCards && classesCards.map(ele => console.log(ele))} */}
       {console.log(classesCards)}
-      {props.expansionCardList.map(ele => (
-        <Card key={ele.dbfId} cardInfo={ele} />
-      ))}
+      {classesCards &&
+        classesCards.map(
+          ele =>
+            ele && <SingleGroup key={ele.dbfId} singleClassCardList={ele} />
+          // console.log(ele)
+        )}
     </Container>
   );
 };
