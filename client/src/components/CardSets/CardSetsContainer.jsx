@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import GalleryIntroHeader from './GalleryIntroHeader';
 const Container = styled.div`
   display: flex;
   flex-flow: column wrap;
@@ -49,7 +50,7 @@ const CardSetContainer = props => {
   }, [props.apiKey]);
   return (
     <Container>
-      <Title>Standard Sets: </Title>
+      <GalleryIntroHeader />
       {hearthstoneInfo &&
         hearthstoneInfo.standard.map(ele => (
           <LinkWrap to={`/expansion-card-set/${ele}`}>

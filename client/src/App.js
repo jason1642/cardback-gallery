@@ -23,6 +23,7 @@ const App = () => {
     };
     callAPI();
   }, []);
+
   return (
     <div className="App">
       <Header />

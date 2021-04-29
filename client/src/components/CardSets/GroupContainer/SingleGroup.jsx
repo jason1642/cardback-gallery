@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Card from '../Card/Card';
 const Container = styled.div`
   display: flex;
-  border-top: 3px solid black;
+  border-top: 3px solid #726458;
   border-radius: 5px 5px 0 0;
   flex-flow: row wrap;
   /* overflow: hidden; */
@@ -11,12 +11,12 @@ const Container = styled.div`
 `;
 const Header = styled.div`
   width: 100%;
-
   /* background-color: lightgreen; */
 `;
 const Title = styled.h2`
   text-align: center;
-  font-size: 1.8em;
+  font-size: 2.1em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 `;
 const SingleGroup = props => {
   const [cardList, setCardList] = useState();

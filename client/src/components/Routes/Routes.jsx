@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import CardbackGallery from '../CardBackGalleryContainer/CardBackGalleryContainer';
 import HomePage from '../HomePage/HomePage';
 import CardSets from '../CardSets/CardSetsContainer';
 import CardSetGallery from '../CardSets/CardSetGallery';
+import styled from 'styled-components';
 
+const Container = styled.div``;
 const Routes = props => {
+  const [headerHeight, setHeaderHeight] = useState();
+  useEffect(() => {
+    setHeaderHeight(document.getElementById('header').clientHeight);
+  }, []);
+
   return (
-    <>
+    <Container
+      style={{
+        marginTop: `${
+          headerHeight && document.getElementById('header').clientHeight
+        }px`,
+      }}
+    >
       <Route
         exact
         path="/cardbacks"
@@ -28,7 +41,7 @@ const Routes = props => {
         )}
       />
       <Route exact path="/" render={() => <HomePage />} />
-    </>
+    </Container>
   );
 };
 

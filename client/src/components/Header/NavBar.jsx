@@ -4,14 +4,19 @@ import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
-  /* align-items: flex-end; */
-  height: 50%;
+
+  /* height: 50%; */
 `;
 
 const Nav = styled(Link)`
   text-decoration: none;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   padding: 0 12px;
+  /* font-size: 1.2em; */
   &:hover {
     cursor: pointer;
     background-color: grey;
