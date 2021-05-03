@@ -1,15 +1,19 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
+require('dotenv').config();
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+const passport = require('passport');
+const session = require('express-session');
+const BnetStrategy = require('passport-bnet').Strategy;
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var testAPIRouter = require('./routes/testAPI');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const testAPIRouter = require('./routes/testAPI');
 
-var app = express();
+const app = express();
 const { API_KEY } = process.env;
 
 // view engine setup
@@ -32,12 +36,17 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 // const buildFolder = '../frontend/build';
-
-// app.set('views', path.join(__dirname, buildFolder));
-// app.engine('html', require('ejs').renderFile);
-// app.get('/', function (req, res) {
-//   res.render('index.html', { API_URL });
-// });
+app.get('/oauth/battlenet', (req, res) => {
+  passport.authenticate('bnet');
+  console.log('21231eqwqwe');
+});
+app.get(
+  '/oauth/battlenet/callback',
+  passport.authenticate('bnet', { failureRedirect: '/' }),
+  function (req, res) {
+    res.redirect('/');
+  }
+);
 
 // error handler
 app.use(function (err, req, res, next) {
