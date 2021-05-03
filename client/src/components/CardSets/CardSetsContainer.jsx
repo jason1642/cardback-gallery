@@ -51,9 +51,10 @@ const CardSetContainer = props => {
   return (
     <Container>
       <GalleryIntroHeader />
+      <h2>Standard Sets: </h2>
       {hearthstoneInfo &&
-        hearthstoneInfo.standard.map(ele => (
-          <LinkWrap to={`/expansion-card-set/${ele}`}>
+        hearthstoneInfo.standard.map((ele, index) => (
+          <LinkWrap key={index} to={`/expansion-card-set/${ele}`}>
             <SetBox>{ele}</SetBox>
           </LinkWrap>
         ))}
