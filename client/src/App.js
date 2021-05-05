@@ -19,10 +19,11 @@ const App = () => {
   const [blizzardApiKey, setBlizzardApiKey] = useState();
   useEffect(() => {
     const callAPI = () => {
-      fetch('http://localhost:9000/')
+      fetch('http://localhost:9000/keysapi')
         // fetch('http://192.168.1.8:9000/')
         .then(res => res.json())
         .then(data => {
+          console.log(data);
           setRapidApiKey(data.apiKey);
           setBlizzardApiKey(data.blizzardApiKey);
         });
@@ -32,25 +33,19 @@ const App = () => {
         'https://us.api.blizzard.com/hearthstone/metadata?locale=en_US&access_token=US3p0I66qZ08DBY5hhYdn8MF00EdQ7Nszz',
       // 'content-type': 'application/json; charset=utf-8',
     };
+    fetch('http://localhost:9000/keysAPI', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(async res => await console.log(res.json()));
     const blizzardApi = async () => {
       axios.request(options).then(ele => console.log(ele.data));
     };
     // blizzardApi();
     callAPI();
-    const newRequest = () => {
-      axios
-        .request({
-          method: 'post',
-          url:
-            'https://us.battle.net/oauth/token?client_id=45f1d1861db249238e553034fc29a8b2&client_secret=Kno5gqGPHEbB7fmz4bJoUMESJFD6uBpz&grant_type=client_credentials',
-          // grant_type: 'client_credentials',
-          // client_id: '45f1d1861db249238e553034fc29a8b2',
-          // client_secret: 'Kno5gqGPHEbB7fmz4bJoUMESJFD6uBpz',
-        })
-        .then(ele => console.log(ele.data.access_token));
-      console.log('qweqwewq21');
-    };
-    newRequest();
+
+    // newRequest();
   }, []);
 
   return (

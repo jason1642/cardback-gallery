@@ -9,6 +9,7 @@ router.get('/', function (req, res, next) {
   const { API_KEY, BLIZZARD_API_KEY } = process.env;
 
   res.send({ apiKey: API_KEY, blizzardApiKey: BLIZZARD_API_KEY });
+  next();
 });
 
 module.exports = router;
