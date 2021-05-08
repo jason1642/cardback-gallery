@@ -14,20 +14,21 @@ const Container = styled.div`
 const CardSetGallery = props => {
   const [expansionCardList, setExpansionCardList] = useState();
   useEffect(() => {
+    console.log(props);
     const cardBackFetchList = async apiKey => {
       const options = {
         method: 'GET',
         params: { collectible: '1' },
-        url: `https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/sets/${props.match.params.expansionName}`,
-        headers: {
-          'x-rapidapi-key': apiKey,
-          'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com',
-        },
+        url: `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&set=${props.match.params.expansionName}&access_token=${props.blizzardToken}`,
+        // headers: {
+        //   'x-rapidapi-key': apiKey,
+        //   'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com',
+        // },
       };
       axios
         .request(options)
         .then(res => {
-          // console.log(res.data);
+          console.log(res.data);
           setExpansionCardList(res.data);
         })
         .catch(err => {

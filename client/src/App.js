@@ -18,29 +18,27 @@ const App = () => {
   const [rapidApiKey, setRapidApiKey] = useState();
   const [blizzardToken, setblizzardToken] = useState();
   useEffect(() => {
-    const callAPI = () => {
+    // const options = {
+    //   url: `https://us.api.blizzard.com/hearthstone/cards?set=rise-of-shadows?locale=en_US&access_token=${blizzardToken}`,
+    // };
+    const callAPI = async () => {
       fetch('http://localhost:9000/keysapi')
         // fetch('http://192.168.1.8:9000/')
         .then(res => res.json())
-        .then(data => {
-          console.log(data);
+        .then(async data => {
+          console.log(data.blizzardToken);
           setRapidApiKey(data.apiKey);
           setblizzardToken(data.blizzardToken);
-        });
+        })
+        .then(ele =>
+          axios
+            .request(
+              `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&set=rise-of-shadows&access_token=${blizzardToken}`
+            )
+            .then(async ele => console.log(await ele.data))
+        );
     };
-    const options = {
-      url: `https://us.api.blizzard.com/hearthstone/cards?set=rise-of-shadows?locale=en_US&access_token=${blizzardToken}`,
-      // 'content-type': 'application/json; charset=utf-8',
-    };
-    // fetch('http://localhost:9000/keysapi').then(
-    //   async res => await console.log(res)
-    // );
-    const blizzardApi = async () =>
-      await axios.request(options).then(ele => console.log(ele.data));
-    blizzardApi();
     callAPI();
-
-    // newRequest();
   }, []);
 
   return (

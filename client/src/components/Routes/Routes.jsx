@@ -30,14 +30,22 @@ const Routes = props => {
         exact
         path="/cardsets"
         render={() => (
-          <CardSets apiKey={props.apiKey} cardbackList={props.cardbackList} />
+          <CardSets
+            blizzardToken={props.blizzardToken}
+            apiKey={props.apiKey}
+            cardbackList={props.cardbackList}
+          />
         )}
       />
       <Route
         exact
         path="/expansion-card-set/:expansionName"
         render={routerProps => (
-          <CardSetGallery {...routerProps} apiKey={props.apiKey} />
+          <CardSetGallery
+            blizzardToken={props.blizzardToken}
+            {...routerProps}
+            apiKey={props.apiKey}
+          />
         )}
       />
       <Route exact path="/" render={() => <HomePage />} />
