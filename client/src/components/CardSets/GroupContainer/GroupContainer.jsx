@@ -24,7 +24,7 @@ const classes = [
 
 const GroupContainer = props => {
   const [classesCards, setClassesCards] = useState();
-
+  console.log('1231');
   useEffect(() => {
     const newArray = [];
     classes.map(ele => {
