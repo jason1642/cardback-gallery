@@ -29,7 +29,7 @@ const Label = styled.p`
 `;
 const Card = props => {
   const [open, setOpen] = React.useState(false);
-
+  // console.log(props);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -41,9 +41,10 @@ const Card = props => {
     <Container onClick={handleOpen}>
       <Image
         className="card"
-        style={{ backgroundImage: `url(${props.cardInfo.img})` }}
+        style={{ backgroundImage: `url(${props.cardInfo.image})` }}
       />
       <CardInfoModal
+        metaData={props.metaData}
         handleClose={handleClose}
         isOpen={open}
         cardInfo={props.cardInfo}

@@ -57,15 +57,16 @@ const CardInfoModal = props => {
   const classes = useStyles();
   const {
     name,
-    cardSet,
+    cardSetId,
     text,
-    type,
-    img,
+    cardTypeId,
+    image,
     description,
-    flavor,
-    rarity,
-    playerClass,
-    artist,
+    flavorText,
+    rarityId,
+    classId,
+    artistName,
+    keywordIds,
   } = props.cardInfo;
   return (
     <Modal
@@ -81,39 +82,55 @@ const CardInfoModal = props => {
       }}
     >
       <ClickAwayListener onClickAway={props.handleClose}>
-        <Container className={classes.paper}>
-          <ImageSide>
-            <Image src={img} />
-          </ImageSide>
-          <TextSide>
-            <Name id="transition-modal-title">{name}</Name>
-            <p id="transition-modal-description">{description}</p>
-            <p>{flavor}</p>
-            <p dangerouslySetInnerHTML={{ __html: text }} />
-            <ul>
-              <ListItem>
-                <ListLabel>Type: </ListLabel>
-                {type}
-              </ListItem>
-              <ListItem>
-                <ListLabel>Rarity: </ListLabel>
-                {rarity}
-              </ListItem>
-              <ListItem>
-                <ListLabel>Set: </ListLabel>
-                {cardSet}
-              </ListItem>
-              <ListItem>
-                <ListLabel>Class: </ListLabel>
-                {playerClass}
-              </ListItem>
-              <ListItem>
-                <ListLabel>Artist: </ListLabel>
-                {artist}
-              </ListItem>
-            </ul>
-          </TextSide>
-        </Container>
+        {props.metaData && (
+          <Container className={classes.paper}>
+            <ImageSide>
+              <Image src={image} />
+            </ImageSide>
+            <TextSide>
+              <Name id="transition-modal-title">{name}</Name>
+              <p id="transition-modal-description">{description}</p>
+              <p>{flavorText}</p>
+              <p dangerouslySetInnerHTML={{ __html: text }} />
+              <ul>
+                <ListItem>
+                  <ListLabel>Type: </ListLabel>
+                  {props.metaData.types.find(ele => ele.id === cardTypeId).name}
+                </ListItem>
+                <ListItem>
+                  <ListLabel>Rarity: </ListLabel>
+                  {props.metaData.rarities[rarityId - 1].name}
+                </ListItem>
+                <ListItem>
+                  <ListLabel>Set: </ListLabel>
+                  {props.metaData.sets.find(ele => ele.id === cardSetId).name}
+                </ListItem>
+                <ListItem>
+                  <ListLabel>Class: </ListLabel>
+                  {props.metaData.classes.find(ele => ele.id === classId).name}
+                </ListItem>
+                <ListItem>
+                  <ListLabel>Artist: </ListLabel>
+                  {artistName}
+                </ListItem>
+                {keywordIds ? (
+                  <ListItem>
+                    <ListLabel>KeyWords: </ListLabel>
+
+                    {/* {keywordIds.map(item =>
+                      console.log(
+                        props.metaData.keywords.find(ele => ele.id === item)
+                          .name
+                      )
+                    )} */}
+                  </ListItem>
+                ) : (
+                  <></>
+                )}
+              </ul>
+            </TextSide>
+          </Container>
+        )}
       </ClickAwayListener>
     </Modal>
   );

@@ -18,8 +18,12 @@ const CardSetGallery = props => {
     const cardBackFetchList = async apiKey => {
       const options = {
         method: 'GET',
-        params: { collectible: '1' },
-        url: `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&set=${props.match.params.expansionName}&access_token=${props.blizzardToken}`,
+        params: {
+          collectible: '1',
+          page: '2',
+          set: props.match.params.expansionName.toLowerCase(),
+        },
+        url: `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&access_token=${apiKey}`,
         // headers: {
         //   'x-rapidapi-key': apiKey,
         //   'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com',
@@ -35,8 +39,8 @@ const CardSetGallery = props => {
           console.error(err);
         });
     };
-    cardBackFetchList(props.apiKey);
-  }, [props.apiKey]);
+    props.blizzardToken && cardBackFetchList(props.blizzardToken);
+  }, [props.blizzardToken]);
   // console.log(props.match.params.expansionName);
 
   return (
@@ -46,9 +50,12 @@ const CardSetGallery = props => {
           {console.log(expansionCardList)}
           <SetGalleryHeader
             expansionName={props.match.params.expansionName}
-            expansionCardList={expansionCardList}
+            expansionCardList={expansionCardList.cards}
           />
-          <GroupContainer expansionCardList={expansionCardList} />
+          <GroupContainer
+            metaData={props.metaData}
+            expansionCardList={expansionCardList.cards}
+          />
         </>
       )}
     </Container>

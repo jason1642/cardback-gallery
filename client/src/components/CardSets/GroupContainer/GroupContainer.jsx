@@ -9,29 +9,28 @@ const Container = styled.div`
   justify-content: center;
 `;
 const classes = [
-  'Demon Hunter',
-  'Druid',
-  'Hunter',
-  'Mage',
-  'Paladin',
-  'Priest',
-  'Rogue',
-  'Shaman',
-  'Warlock',
-  'Warrior',
-  'Neutral',
+  { name: 'Demon Hunter', id: 14 },
+  { name: 'Druid', id: 2 },
+  { name: 'Hunter', id: 3 },
+  { name: 'Mage', id: 4 },
+  { name: 'Paladin', id: 5 },
+  { name: 'Priest', id: 6 },
+  { name: 'Rogue', id: 7 },
+  { name: 'Shaman', id: 8 },
+  { name: 'Warlock', id: 9 },
+  { name: 'Warrior', id: 10 },
+  { name: 'Neutral', id: 12 },
 ];
 
 const GroupContainer = props => {
   const [classesCards, setClassesCards] = useState();
-  console.log('1231');
   useEffect(() => {
     const newArray = [];
     classes.map(ele => {
-      console.log(ele);
+      // console.log(props.metaData);
       ele &&
         newArray.push(
-          props.expansionCardList.filter(item => item.playerClass === ele)
+          props.expansionCardList.filter(item => item.classId === ele.id)
         );
     });
     setClassesCards(newArray);
@@ -40,13 +39,19 @@ const GroupContainer = props => {
 
   return (
     <Container>
-      {/* {classesCards && classesCards.map(ele => console.log(ele))} */}
       {console.log(classesCards)}
       {classesCards &&
         classesCards.map(
           ele =>
-            ele && <SingleGroup key={ele.dbfId} singleClassCardList={ele} />
-          // console.log(ele)
+            ele && (
+              <SingleGroup
+                metaData={props.metaData}
+                nameOfClass={ele.name}
+                key={ele.dbfId}
+                singleClassCardList={ele}
+                classes={classes}
+              />
+            )
         )}
     </Container>
   );

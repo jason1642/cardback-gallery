@@ -23,39 +23,27 @@ const Title = styled.h1`
   margin: 0;
   padding: 25px 0;
 `;
-const LinkWrap = styled(Link)``;
+const LinkWrap = styled(Link)`
+  text-decoration: none;
+  color: black;
+  font-size: 1.2em;
+`;
 const CardSetContainer = props => {
-  const [hearthstoneInfo, setHearthstoneInfo] = useState();
+  const [metaData, setMetaData] = useState();
   useEffect(() => {
-    const cardBackFetchList = async apiKey => {
-      const options = {
-        method: 'GET',
-        url: 'https://omgvamp-hearthstone-v1.p.rapidapi.com/info',
-        headers: {
-          'x-rapidapi-key': apiKey,
-          'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com',
-        },
-      };
-      axios
-        .request(options)
-        .then(res => {
-          console.log(res.data);
-          setHearthstoneInfo(res.data);
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    };
-    cardBackFetchList(props.apiKey);
-  }, [props.apiKey]);
+    setMetaData(props.metaData);
+    // console.log(props.metaData.setGroups[7]);
+  }, [props.metaData]);
   return (
     <Container>
       <GalleryIntroHeader />
       <h2>Standard Sets: </h2>
-      {hearthstoneInfo &&
-        hearthstoneInfo.standard.map((ele, index) => (
+      {metaData &&
+        metaData.setGroups[7].cardSets.map((ele, index) => (
           <LinkWrap key={index} to={`/expansion-card-set/${ele}`}>
-            <SetBox>{ele}</SetBox>
+            <SetBox>
+              {ele.split('-').join('-').replaceAll('-', ' ').toUpperCase()}
+            </SetBox>
           </LinkWrap>
         ))}
     </Container>

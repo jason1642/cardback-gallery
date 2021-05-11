@@ -22,14 +22,17 @@ const SingleGroup = props => {
   const [cardList, setCardList] = useState();
   useEffect(() => {
     setCardList(props.singleClassCardList);
+    console.log(cardList);
   }, [props.singleClassCardList]);
   return (
     <Container>
       <Header>
-        <Title>{cardList && cardList[0].playerClass}</Title>
+        <Title>{cardList && props.nameOfClass}</Title>
       </Header>
       {props.singleClassCardList &&
-        props.singleClassCardList.map(ele => <Card cardInfo={ele} />)}
+        props.singleClassCardList.map(ele => (
+          <Card metaData={props.metaData} cardInfo={ele} />
+        ))}
     </Container>
   );
 };

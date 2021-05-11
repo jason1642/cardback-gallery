@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Route } from 'react-router-dom';
 import CardbackGallery from '../CardBackGalleryContainer/CardBackGalleryContainer';
 import HomePage from '../HomePage/HomePage';
-import CardSets from '../CardSets/CardSetsContainer';
+import CardSetsContainer from '../CardSets/CardSetsContainer';
 import CardSetGallery from '../CardSets/CardSetGallery';
 import styled from 'styled-components';
 
@@ -10,8 +10,9 @@ const Container = styled.div``;
 const Routes = props => {
   const [headerHeight, setHeaderHeight] = useState();
   useEffect(() => {
+    console.log(props);
     setHeaderHeight(document.getElementById('header').clientHeight);
-  }, []);
+  }, [props.metaData]);
 
   return (
     <Container
@@ -30,10 +31,9 @@ const Routes = props => {
         exact
         path="/cardsets"
         render={() => (
-          <CardSets
+          <CardSetsContainer
+            metaData={props.metaData}
             blizzardToken={props.blizzardToken}
-            apiKey={props.apiKey}
-            cardbackList={props.cardbackList}
           />
         )}
       />
@@ -44,6 +44,7 @@ const Routes = props => {
           <CardSetGallery
             blizzardToken={props.blizzardToken}
             {...routerProps}
+            metaData={props.metaData}
             apiKey={props.apiKey}
           />
         )}
