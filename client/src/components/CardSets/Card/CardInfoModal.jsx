@@ -5,6 +5,7 @@ import { Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Backdrop from '@material-ui/core/Backdrop';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import KeywordToolTip from './KeywordToolTip';
 // https://material-ui.com/components/click-away-listener/
 
 const useStyles = makeStyles(theme => ({
@@ -49,6 +50,9 @@ const ListItem = styled.li``;
 const ListLabel = styled.span`
   color: rgb(255, 229, 172);
   font-weight: bold;
+`;
+const Keyword = styled.b`
+  cursor: pointer;
 `;
 const Name = styled.h2``;
 // This component is a popover element that will display information of an item that was clicked and block interaction with the rest of the application.
@@ -113,16 +117,31 @@ const CardInfoModal = props => {
                   <ListLabel>Artist: </ListLabel>
                   {artistName}
                 </ListItem>
-                {keywordIds ? (
+                {props.cardInfo.keywordIds ? (
                   <ListItem>
                     <ListLabel>KeyWords: </ListLabel>
 
-                    {/* {keywordIds.map(item =>
-                      console.log(
-                        props.metaData.keywords.find(ele => ele.id === item)
-                          .name
-                      )
-                    )} */}
+                    {keywordIds.map((item, index) => {
+                      return (
+                        <>
+                          <KeywordToolTip
+                            name={
+                              props.metaData.keywords.find(
+                                ele => ele.id === item
+                              ).name
+                            }
+                            description={
+                              props.metaData.keywords.find(
+                                ele => ele.id === item
+                              ).text
+                            }
+                          />
+
+                          {/* adds a comma to the end of each item unless its the last in the array */}
+                          {index !== keywordIds.length - 1 && <span>, </span>}
+                        </>
+                      );
+                    })}
                   </ListItem>
                 ) : (
                   <></>
