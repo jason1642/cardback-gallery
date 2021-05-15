@@ -59,6 +59,7 @@ const Name = styled.h2``;
 
 const CardInfoModal = props => {
   const classes = useStyles();
+  console.log('erwe');
   const {
     name,
     cardSetId,
