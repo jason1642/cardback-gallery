@@ -11,6 +11,7 @@ const BnetStrategy = require('passport-bnet').Strategy;
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const metadataRouter = require('./routes/metaData');
 const keysRouter = require('./routes/keysAPI');
 
 const app = express();
@@ -28,7 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-// app.use('/users', usersRouter);
+app.use('/metadata', metadataRouter);
 app.use('/keysapi', keysRouter);
 
 // catch 404 and forward to error handler
