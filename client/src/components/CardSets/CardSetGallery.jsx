@@ -20,7 +20,7 @@ const CardSetGallery = props => {
         method: 'GET',
         params: {
           collectible: '1',
-          page: '2',
+          pageSize: 400,
           set: props.match.params.expansionName.toLowerCase(),
         },
         url: `https://us.api.blizzard.com/hearthstone/cards?locale=en_US&access_token=${apiKey}`,
