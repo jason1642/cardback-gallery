@@ -15,8 +15,7 @@ const axios = require('axios');
 // });
 
 router.get('/:id', (req, res, next) => {
-  res.send({myResponse: 'string is a response here'});
-  next()
+  res.send(console.log('metadata router'));
+  // next();
 });
-
 module.exports = router;

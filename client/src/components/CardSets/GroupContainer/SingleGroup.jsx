@@ -22,11 +22,12 @@ const SingleGroup = props => {
   const [cardList, setCardList] = useState();
   useEffect(() => {
     setCardList(props.singleClassCardList);
-    console.log(cardList);
-  }, [props.singleClassCardList]);
+    // console.log(cardList);
+  }, [props.singleClassCardList, props.nameOfClass]);
   return (
     <Container>
       <Header>
+        {/* {console.log(props)} */}
         <Title>{cardList && props.nameOfClass}</Title>
       </Header>
       {props.singleClassCardList &&
