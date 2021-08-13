@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
+
+import axios from 'axios';
+
 const Container = styled.div`
   display: flex;
   /* margin-bottom: 40px; */
@@ -22,11 +25,19 @@ const Image = styled.img`
 `;
 const LogoButton = styled(Link)``;
 const Header = props => {
+
+  const getMetaData = async () => {
+    await fetch('http://localhost:9000/metadata') .then(res => res.body)
+    .then(async data => {
+      console.log(data);
+    });    
+  };
   return (
     <Container id="header" data-testid="header">
       <LogoButton to="/">
         <Image src="https://cdn.iconscout.com/icon/free/png-512/hearthstone-2288562-1933807.png" />
       </LogoButton>
+      <button onClick={getMetaData}>TEST</button>
       <NavBar />
     </Container>
   );

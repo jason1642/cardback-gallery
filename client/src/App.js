@@ -46,8 +46,7 @@ const App = () => {
     console.log(metaData);
   }, [blizzardToken]);
 
-  
-  
+ 
   return (
     <div className="App">
       <Header />
