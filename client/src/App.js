@@ -46,23 +46,8 @@ const App = () => {
     console.log(metaData);
   }, [blizzardToken]);
 
-  const printNumber=num=>{
-    for(let i = 0; i < 1000; i++){
-
-    if(i % 2 === 0){
-      items.push(<p>123</p>)
-    }
-    else{
-      items.push(<p>qweqw</p>)
-    }
-  }
-  }
-  const forEle = (int) => {
-    for(let i = 0; i < int; i++){
-      printNumber(i)
-    }
-  }
-  printNumber()
+  
+  
   return (
     <div className="App">
       <Header />

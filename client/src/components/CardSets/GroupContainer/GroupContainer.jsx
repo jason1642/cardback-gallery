@@ -8,6 +8,7 @@ const Container = styled.div`
   flex-flow: column wrap;
   justify-content: center;
 `;
+// List of all available hearthstone classes, with corresponding IDs as they appear on the official hearthstone API
 const classes = [
   { name: 'Demon Hunter', id: 14 },
   { name: 'Druid', id: 2 },
@@ -25,9 +26,10 @@ const classes = [
 const GroupContainer = props => {
   const [classesCards, setClassesCards] = useState();
   useEffect(() => {
+
     const newArray = [];
+    // Create an array of different hearthstone class cards from an array of a list of unordered cards
     classes.map(ele => {
-      // console.log(props.metaData);
       ele &&
         newArray.push(
           props.expansionCardList.filter(item => item.classId === ele.id)
@@ -39,14 +41,13 @@ const GroupContainer = props => {
 
   return (
     <Container>
-      {console.log(classesCards)}
       {classesCards &&
         classesCards.map(
-          ele =>
+          (ele, index) =>
             ele && (
               <SingleGroup
                 metaData={props.metaData}
-                nameOfClass={ele.name}
+                classNumber={classesCards[index][0].classId}
                 key={ele.dbfId}
                 singleClassCardList={ele}
                 classes={classes}

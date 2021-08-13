@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
+// dropdown sort bar to filter cards
+import SortBar from './SortBar/Container'
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -23,7 +24,7 @@ const SetHeader = props => {
       <Title>
         {props.expansionCardList.length} cards found for "{props.expansionName}"
       </Title>
-      <FilterBar>NavBar</FilterBar>
+      <SortBar/>
     </Container>
   );
 };
