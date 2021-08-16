@@ -27,7 +27,6 @@ const App = () => {
         // fetch('http://192.168.1.8:9000/')
         .then(res => res.json())
         .then(async data => {
-          console.log(data.blizzardToken);
           setRapidApiKey(data.apiKey);
           setblizzardToken(data.blizzardToken);
         });
@@ -43,7 +42,6 @@ const App = () => {
         .then(async ele => setMetaData(ele.data));
     };
     blizzardToken && fetchMetaData(blizzardToken);
-    console.log(metaData);
   }, [blizzardToken]);
 
  

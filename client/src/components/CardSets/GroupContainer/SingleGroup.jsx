@@ -20,6 +20,7 @@ const Title = styled.h2`
   font-family: Georgia, 'Times New Roman', Times, serif;
 `;
 const SingleGroup = props => {
+  // If true, the cards are sorted from low to high mana cost, opposite if false
   const [cardList, setCardList] = useState();
   const [groupClassName, setGroupClassName] = useState();
   
@@ -29,8 +30,8 @@ const SingleGroup = props => {
       props.metaData && setGroupClassName(props.metaData.classes.find(ele=>ele.id === props.classNumber))
     
   },[props, props.metaData]
-    // [props.singleClassCardList, props.nameOfClass, props.metaData]
   );
+  
   return (
     <Container>
       <Header>

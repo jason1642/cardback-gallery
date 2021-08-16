@@ -12,9 +12,12 @@ const Container = styled.div`
   background-image: url('https://previews.123rf.com/images/roystudio/roystudio1511/roystudio151100310/48782033-old-parchment-paper-texture-background.jpg');
 `;
 const CardSetGallery = props => {
+
+  // Array of objects representing cards from the expansion queried for
   const [expansionCardList, setExpansionCardList] = useState();
+  const [currentSortOption, setCurrentSortOption ] = useState("Mana: Low to High")
   useEffect(() => {
-    console.log(props);
+
     const cardBackFetchList = async apiKey => {
       const options = {
         method: 'GET',
@@ -41,8 +44,10 @@ const CardSetGallery = props => {
     };
     props.blizzardToken && cardBackFetchList(props.blizzardToken);
   }, [props.blizzardToken]);
-  // console.log(props.match.params.expansionName);
-
+  const changeOrderOption = order => {
+    setCurrentSortOption(order)
+  }
+ 
   return (
     <Container>
       {expansionCardList && (
@@ -51,10 +56,13 @@ const CardSetGallery = props => {
           <SetGalleryHeader
             expansionName={props.match.params.expansionName}
             expansionCardList={expansionCardList.cards}
+            changeOrderOption={changeOrderOption}
           />
           <GroupContainer
             metaData={props.metaData}
             expansionCardList={expansionCardList.cards}
+            currentSortOption={currentSortOption}
+            
           />
         </>
       )}

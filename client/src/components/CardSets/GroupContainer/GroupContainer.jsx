@@ -24,11 +24,13 @@ const classes = [
 ];
 
 const GroupContainer = props => {
+  // Creates array of arrays, each representing different hearthstone class and nuetral cards
   const [classesCards, setClassesCards] = useState();
+  const [listOfCards, setListOfCards ] = useState()
   useEffect(() => {
 
-    const newArray = [];
     // Create an array of different hearthstone class cards from an array of a list of unordered cards
+    const newArray = [];
     classes.map(ele => {
       ele &&
         newArray.push(
@@ -36,24 +38,33 @@ const GroupContainer = props => {
         );
     });
     setClassesCards(newArray);
-    console.log(classesCards);
   }, [props.expansionCardList]);
 
+  useEffect(() => {
+    console.log(props.currentSortOption)
+    // sortArray()
+  }, [props.currentSortOption])
+  // Array of cards sorted by class
+  const sortedCardList = () => 
+    setListOfCards(classesCards.map(
+      (ele, index) =>
+        ele && (
+          <SingleGroup
+            metaData={props.metaData}
+            classNumber={classesCards[index][0].classId}
+            key={ele.dbfId}
+            singleClassCardList={props.currentSortOption === "Mana: Low to High" ? ele.sort((a,b)=>a.manaCost - b.manaCost) : ele.sort((a,b)=>a.manaCost - b.manaCost).reverse()}
+            classes={classes}
+          />
+        )
+    ))
+  useEffect(() => {
+    classesCards && sortedCardList(props.currentSortOption)
+    console.log()
+  },[props.currentSortOption, classesCards])
   return (
     <Container>
-      {classesCards &&
-        classesCards.map(
-          (ele, index) =>
-            ele && (
-              <SingleGroup
-                metaData={props.metaData}
-                classNumber={classesCards[index][0].classId}
-                key={ele.dbfId}
-                singleClassCardList={ele}
-                classes={classes}
-              />
-            )
-        )}
+      {classesCards && listOfCards}
     </Container>
   );
 };

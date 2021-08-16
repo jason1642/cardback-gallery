@@ -24,7 +24,8 @@ const SetHeader = props => {
       <Title>
         {props.expansionCardList.length} cards found for "{props.expansionName}"
       </Title>
-      <SortBar/>
+      {/* ./SortBar/Container */}
+      <SortBar changeOrderOption={ props.changeOrderOption}/>
     </Container>
   );
 };

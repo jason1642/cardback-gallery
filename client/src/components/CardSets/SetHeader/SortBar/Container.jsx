@@ -13,11 +13,11 @@ const Label = styled.h2`
   display: flex;
   justify-content: center;
 `
-const Container = () => {
+const Container = props => {
   return ( 
     <Main>
       <Label>Sort By:</Label>
-      <Dropdown/>
+      <Dropdown changeOrderOption={ props.changeOrderOption}/>
     </Main>
    );
 }
