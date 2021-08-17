@@ -3,28 +3,14 @@ import Header from './components/Header/Header';
 import Routes from './components/Routes/Routes';
 import axios from 'axios';
 const App = () => {
-  // dotenv variable, from /api. See .sample.env
-  // const [apiKey, setApiKey] = useState();
-  // const callAPI = () => {
-  //   fetch('http://localhost:9000/')
-  //     .then(res => res.text())
-  //     .then(res => console.log(res));
-  // };
-
-  // useEffect(() => {
-  //   callAPI();
-  // }, []);
-
+ 
   const [rapidApiKey, setRapidApiKey] = useState();
   const [blizzardToken, setblizzardToken] = useState();
   const [metaData, setMetaData] = useState();
   useEffect(() => {
-    // const options = {
-    //   url: `https://us.api.blizzard.com/hearthstone/cards?set=rise-of-shadows?locale=en_US&access_token=${blizzardToken}`,
-    // };
+   
     const callAPI = async () => {
       fetch('http://localhost:9000/keysapi')
-        // fetch('http://192.168.1.8:9000/')
         .then(res => res.json())
         .then(async data => {
           setRapidApiKey(data.apiKey);
@@ -42,6 +28,7 @@ const App = () => {
         .then(async ele => setMetaData(ele.data));
     };
     blizzardToken && fetchMetaData(blizzardToken);
+
   }, [blizzardToken]);
 
  

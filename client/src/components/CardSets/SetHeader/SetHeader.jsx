@@ -18,7 +18,6 @@ const FilterBar = styled.div`
   /* align-self: flex-end; */
 `;
 const SetHeader = props => {
-  console.log(props.expansionName);
   return (
     <Container>
       <Title>

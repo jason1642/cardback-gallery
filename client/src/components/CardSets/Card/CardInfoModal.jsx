@@ -124,7 +124,7 @@ const CardInfoModal = props => {
                     {keywordIds.map((item, index) => {
                       return (
                         <>
-                          {/* <KeywordToolTip
+                           <KeywordToolTip
                             name={
                               props.metaData.keywords &&
                               props.metaData.keywords.find(
@@ -136,9 +136,9 @@ const CardInfoModal = props => {
                                 ele => ele.id === item
                               ).text
                             }
-                          /> */} 
-                           {/* adds a comma to the end of each item unless its the last in the array 
-                          {index !== keywordIds.length - 1 && <span>, </span>} */}
+                          /> 
+             {/* adds a comma to the end of each item unless its the last in the array  */}
+                          {index !== keywordIds.length - 1 && <span>, </span>} 
                         </>
                       );
                     })}

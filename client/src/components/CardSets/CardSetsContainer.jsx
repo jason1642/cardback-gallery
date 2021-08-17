@@ -11,23 +11,40 @@ const Container = styled.div`
 `;
 const SetBox = styled.div`
   color: black;
-  background-color: orange;
-  border: 1px solid black;
-  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  /* border: 1px solid black; */
+  padding: 40px;
   margin: 30px auto;
+  text-align: center;
+  
+  height: 30%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
   &:hover {
     background-color: #f7c871;
   }
 `;
 const Title = styled.h1`
   margin: 0;
+  text-align: center;
   padding: 25px 0;
 `;
 const LinkWrap = styled(Link)`
   text-decoration: none;
   color: black;
-  font-size: 1.2em;
+  font-size: 1.7em;
+  width: 25%;
+  margin: 1em;
+  
 `;
+const SetLinksContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`
 const CardSetContainer = props => {
   const [metaData, setMetaData] = useState();
   useEffect(() => {
@@ -37,7 +54,8 @@ const CardSetContainer = props => {
   return (
     <Container>
       <GalleryIntroHeader />
-      <h2>Standard Sets: </h2>
+      <Title>Standard Sets: </Title>
+      <SetLinksContainer>
       {metaData &&
         metaData.setGroups[7].cardSets.map((ele, index) => (
           <LinkWrap key={index} to={`/expansion-card-set/${ele}`}>
@@ -46,6 +64,7 @@ const CardSetContainer = props => {
             </SetBox>
           </LinkWrap>
         ))}
+      </SetLinksContainer>
     </Container>
   );
 };

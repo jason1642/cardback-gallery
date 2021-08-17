@@ -7,25 +7,30 @@ const Container = styled.span`
   cursor: pointer;
 `;
 const KeywordToolTip = props => {
+  console.log(props)
   return (
-    <Container>
-      <ReactTooltip
-        backgroundColor="white"
-        textColor="black"
-        place="right"
-        multiline="true"
-        effect="solid"
-        html={true}
-      />
-      <span
-        style={{ color: 'orange' }}
-        // data-offset="{'top': -100}"
-        data-html={true}
-        data-tip={`${props.description}`}
-      >
-        {props.name}
-      </span>
-    </Container>
+    <>
+      {
+        <Container>
+        <ReactTooltip
+          backgroundColor="white"
+          textColor="black"
+          place="right"
+          multiline="true"
+          effect="solid"
+          html={true}
+        />
+        <span
+          style={{ color: 'orange' }}
+          // data-offset="{'top': -100}"
+          data-html={true}
+          data-tip={`${props.description}`}
+        >
+          {props.name}
+        </span>
+      </Container>
+      }
+      </>
   );
 };
 

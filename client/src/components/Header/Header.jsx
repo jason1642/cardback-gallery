@@ -37,7 +37,7 @@ const Header = props => {
       <LogoButton to="/">
         <Image src="https://cdn.iconscout.com/icon/free/png-512/hearthstone-2288562-1933807.png" />
       </LogoButton>
-      <button onClick={getMetaData}>TEST</button>
+      {/* <button onClick={getMetaData}>TEST</button> */}
       <NavBar />
     </Container>
   );

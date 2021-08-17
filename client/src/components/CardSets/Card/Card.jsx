@@ -47,6 +47,7 @@ const Card = props => {
         metaData={props.metaData}
         handleClose={handleClose}
         isOpen={open}
+        key={props.cardInfo.name}
         cardInfo={props.cardInfo}
       />
 

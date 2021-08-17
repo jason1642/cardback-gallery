@@ -52,7 +52,6 @@ const CardSetGallery = props => {
     <Container>
       {expansionCardList && (
         <>
-          {console.log(expansionCardList)}
           <SetGalleryHeader
             expansionName={props.match.params.expansionName}
             expansionCardList={expansionCardList.cards}
